@@ -29,24 +29,24 @@
 
 print("Primera ecuacion: ")
 
-x1 = 1
-y1 = 1
-z1 = 1
-respuesta1 = 30
+x1 = 3
+y1 = 4
+z1 = 2
+respuesta1 = 6
 
 print("Segunda ecuacion: ")
 
-x2 = 1
-y2 = 1
-z2 = -2
-respuesta2 = 0
+x2 = 6
+y2 = 9
+z2 = 1
+respuesta2 = 7
 
 print("Tercera ecuacion: ")
 
-x3 = 1
-y3 = 3
-z3 = -2
-respuesta3 = 20
+x3 = 3
+y3 = 6
+z3 = 2
+respuesta3 = 8
 
 matriz = [
     [x1, y1, z1],
