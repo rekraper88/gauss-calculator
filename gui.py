@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Calculadora Gauss")
         self.resize(QSize(600, 400))
-        
+
         main_layout = QVBoxLayout()
         main_layout.setAlignment(Qt.AlignHCenter)
         main_layout.setContentsMargins(0, 45, 0, 0)
@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
         button = QPushButton("Calcular")
         button.clicked.connect(self.calculate)
 
-        clear_button = QPushButton("Borrar")
+        clear_button = QPushButton("Resetear")
         clear_button.clicked.connect(self.clear)
 
         self.message_heading = QLabel("Respuesta: ")
@@ -37,7 +37,7 @@ class MainWindow(QMainWindow):
 
         self.message = QLabel("")
         self.message.setFont(QFont('Segoe UI', 10.5))
-        
+
         container_element = QVBoxLayout()
         for i in range(3):
             row = self.create_matrix_row()
@@ -73,13 +73,13 @@ class MainWindow(QMainWindow):
                 layout.addWidget(label)
             self.inputs.append(input)
         return layout
-    
+
     def clear(self):
         for number in self.inputs:
             number.setText('')
         self.message_heading.hide()
         self.message.hide()
-    
+
     def print_matrix(self, matrix):
         for fila in matrix:
             print(fila)
@@ -93,8 +93,8 @@ class MainWindow(QMainWindow):
             matrix_numbers = [float(value) for value in values]
         except ValueError:
             self.message.setText("Todos los valores tienen que ser números")
-            return 
-        
+            return
+
         matrix = [matrix_numbers[i:i + 4] for i in range(0, len(matrix_numbers), 4)]
         matrix[0] = convertir_fila_en_uno(matrix)
         matrix[1] = restar_filas(matrix, 1)
@@ -107,7 +107,7 @@ class MainWindow(QMainWindow):
         self.message_heading.show()
         self.message.show()
         self.message.setText(calcular_respuestas(matrix))
-    
+
 
 
 app = QApplication(sys.argv)
