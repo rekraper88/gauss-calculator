@@ -1,13 +1,10 @@
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QFont
-
 from main import convertir_fila_en_uno, restar_filas, calcular_segunda_fila, calcular_respuestas
-
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QWidget, QHBoxLayout
 import sys
 
 variables = ['x +', 'y +', 'z', '=']
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -85,9 +82,8 @@ class MainWindow(QMainWindow):
             print(fila)
         print('\n\n')
 
-    def calculate(self):
+    def calculate(self):    
         values = [input.text() for input in self.inputs]
-
         matrix_numbers = []
         try:
             matrix_numbers = [float(value) for value in values]
@@ -108,11 +104,7 @@ class MainWindow(QMainWindow):
         self.message.show()
         self.message.setText(calcular_respuestas(matrix))
 
-
-
 app = QApplication(sys.argv)
-
 window = MainWindow()
 window.show()
-
 app.exec()

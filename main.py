@@ -1,4 +1,16 @@
 def convertir_fila_en_uno(matriz, i=0):
+    print(matriz)
+    if matriz[0][0] == 0:
+        if matriz[1][0] != 0:
+            # intercambiar la fila 1 con fila 2 y convertirlo de nuevo
+            matriz[0], matriz[1] = matriz[1], matriz[0]
+            return convertir_fila_en_uno(matriz)
+        elif matriz[2][0] != 0:
+            matriz[0], matriz[2] = matriz[2], matriz[0]
+            return convertir_fila_en_uno(matriz)
+        else:
+            return "No hay solucion"
+
     nueva_fila = []
     primer_elemento = matriz[i][i]
 
@@ -32,6 +44,10 @@ def calcular_segunda_fila(matriz):
 
 
 def calcular_respuestas(matriz):
+    for i in range(3):
+        if matriz[i][i] == 0:
+            return "La matriz no tiene solucion unica."
+
     z = matriz[2][3]/matriz[2][2]
     y = (matriz[1][3]-(matriz[1][2]*z))/matriz[1][1]
     x = (matriz[0][3] - (matriz[0][2]*z) - (matriz[0][1]*y))/matriz[0][0]
