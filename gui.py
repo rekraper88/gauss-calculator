@@ -85,19 +85,20 @@ class MainWindow(QMainWindow):
     def calculate(self):    
         values = [input.text() for input in self.inputs]
         matrix_numbers = []
+        matrix = []
         try:
             matrix_numbers = [float(value) for value in values]
         except ValueError:
             self.message.setText("Todos los valores tienen que ser números")
             return
 
-        matrix = [matrix_numbers[i:i + 4] for i in range(0, len(matrix_numbers), 4)]
+        for i in range(0, len(matrix_numbers), 4):
+            matrix.append(matrix_numbers[i:i+4])
+            
         matrix[0] = convertir_fila_en_uno(matrix)
         matrix[1] = restar_filas(matrix, 1)
         matrix[2] = restar_filas(matrix, 2)
-        self.print_matrix(matrix)
         matrix[1], matrix[2] = calcular_segunda_fila(matrix)
-        self.print_matrix(matrix)
         matrix[2] = restar_filas(matrix, 2, 1)
 
         self.message_heading.show()
